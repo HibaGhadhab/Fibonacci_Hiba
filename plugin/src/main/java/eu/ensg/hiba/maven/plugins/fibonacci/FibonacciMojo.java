@@ -14,7 +14,7 @@ public class FibonacciMojo extends AbstractMojo
     private long myNumber;
 
     public void execute() {
-        System.out.println("Calculating your Fibonacci result is...");
+        System.out.println("Your Fibonacci result is...");
         System.out.println(String.valueOf(SuiteFibonnaci.fibo(myNumber)));
     }
 }

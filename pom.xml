@@ -13,6 +13,7 @@
     <modules>
         <module>core</module>
         <module>plugin</module>
+        <module>webapp</module>
     </modules>
 
     <properties>
@@ -22,8 +23,9 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
 
-<!--
+
         <springframework.boot.version>2.1.2.RELEASE</springframework.boot.version>
+        <!--
         <maven.javadoc.version>3.1.0-SNAPSHOT</maven.javadoc.version>
         <org.jacoco.version>0.8.2</org.jacoco.version>
 -->
@@ -53,7 +55,7 @@
                 <version>4.12</version>
                 <scope>provided</scope>
             </dependency>
-<!--
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -61,7 +63,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
--->
+
 
         </dependencies>
     </dependencyManagement>

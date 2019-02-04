@@ -8,6 +8,7 @@
         <artifactId>fibonacci</artifactId>
         <groupId>eu.ensg.hiba.fibonacci</groupId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../</relativePath>
     </parent>
 
     <artifactId>core</artifactId>
