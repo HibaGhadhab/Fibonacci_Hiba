@@ -11,10 +11,8 @@
     <packaging>pom</packaging>
 
     <modules>
-
         <module>core</module>
-        <module>fibonacci-maven-plugin</module>
-
+        <module>plugin</module>
     </modules>
 
     <properties>
@@ -55,7 +53,6 @@
                 <version>4.12</version>
                 <scope>provided</scope>
             </dependency>
-
 <!--
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -65,7 +62,6 @@
                 <scope>import</scope>
             </dependency>
 -->
-
 
         </dependencies>
     </dependencyManagement>
