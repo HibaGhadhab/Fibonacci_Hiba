@@ -1,4 +1,4 @@
-package src.main.java.eu.ensg.hiba.fibonacci.webapp.eu.ensg.mmargolle.fibonacci.webapp;
+package src.main.java.eu.ensg.hiba.fibonacci.webapp;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,3 +23,4 @@ public class FiboController
         return String.valueOf(SuiteFibonnaci.fibo(my_number));
     }
 }
+

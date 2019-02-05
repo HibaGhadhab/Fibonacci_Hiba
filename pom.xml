@@ -71,5 +71,12 @@
         </dependencies>
     </dependencyManagement>
 
+    <distributionManagement>
+        <site>
+            <id>fibonacci-site</id>
+            <name>Test site</name>
+            <url>http://localhost/fibonacci/</url>
+        </site>
+    </distributionManagement>
 
 </project>
