@@ -1,6 +1,5 @@
 package eu.ensg.hiba.maven.plugins.fibonacci;
 
-
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
