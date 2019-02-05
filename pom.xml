@@ -29,7 +29,7 @@
         <springframework.boot.version>2.1.2.RELEASE</springframework.boot.version>
 
         <!--documentation des modules avec Javadoc-->
-        <maven.javadoc.version>3.1.0-SNAPSHOT</maven.javadoc.version>
+        <!--<maven.javadoc.version>3.1.0-SNAPSHOT</maven.javadoc.version>-->
 
     </properties>
 
@@ -71,12 +71,76 @@
         </dependencies>
     </dependencyManagement>
 
+    <!--To deploy the site-->
     <distributionManagement>
         <site>
-            <id>fibonacci-site</id>
-            <name>Test site</name>
+            <id>Fibonacci-site</id>
+            <name>Fibonacci</name>
             <url>http://localhost/fibonacci/</url>
         </site>
     </distributionManagement>
+
+    <build>
+        <!--To define the plugin version in your parent POM-->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.0.1</version>
+                </plugin>
+<!--                without these next 2 plugins,
+                IntelliJ is enabled to create the site (under target) by default-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.7.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-project-info-reports-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+<!--    <build>
+        <plugins>
+            &lt;!&ndash;without this plugin, IntelliJ is enabled to create the site (under target) by default&ndash;&gt;
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.7.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.1</version>
+                <configuration>
+                    <show>private</show>
+                    <nohelp>true</nohelp>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.1</version>
+                <configuration>
+                    <stylesheetfile>${basedir}/src/main/javadoc/stylesheet.css</stylesheetfile>
+                    <show>public</show>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>-->
 
 </project>
