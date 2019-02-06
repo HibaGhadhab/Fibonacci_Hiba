@@ -17,6 +17,8 @@
 
     <packaging>maven-plugin</packaging>
 
+    <description>Fibonacci module (maven-plugin)</description>
+
     <dependencies>
 
         <dependency>

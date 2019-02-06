@@ -16,6 +16,9 @@
 
     <packaging>jar</packaging>
 
+    <description>Fibonacci module core (jar)</description>
+
+
     <dependencies>
 
         <!--pour les tests unitaires-->

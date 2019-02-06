@@ -16,6 +16,8 @@
 
     <packaging>jar</packaging>
 
+    <description>Fibonacci module webapp (jar)</description>
+
     <dependencies>
 
         <dependency>
