@@ -133,21 +133,7 @@
         </pluginManagement>
         <plugins>
 
-            <!--&lt;!&ndash; no idea what is it  &ndash;&gt;
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>3.7.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-descriptor</id>
-                        <goals>
-                            <goal>attach-descriptor</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>-->
-            <!-- START SNIPPET: source -->
+            <!-- maven-source-plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -160,10 +146,8 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- END SNIPPET: source -->
-            <!-- START SNIPPET: javadoc -->
 
-            <!-- PROBLEM HERE javadoc -->
+            <!-- maven-javadoc-plugin -->
            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -177,8 +161,8 @@
                     </execution>
                 </executions>
             </plugin>
-        <!-- END SNIPPET: javadoc -->
-            <!-- for the errors -->
+
+            <!-- maven-project-info-reports-plugin for the errors -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
@@ -202,7 +186,6 @@
                     </dependency>
                 </dependencies>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -214,6 +197,7 @@
         </plugins>
     </build>
 
+    <!-- reporting: maven-javadoc-plugin -->
     <reporting>
         <plugins>
             <plugin>
@@ -223,7 +207,5 @@
             </plugin>
         </plugins>
     </reporting>
-
-
 
 </project>

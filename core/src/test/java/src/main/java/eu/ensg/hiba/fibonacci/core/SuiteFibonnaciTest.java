@@ -40,4 +40,10 @@ public class SuiteFibonnaciTest {
         //assertEquals(125, SuiteFibonnaci.fibo(13));
     }
 
+    //IC: faux test à tester avec Azure DevOps Pipeline
+    @Test
+    public void fiboIC()
+    {
+        assertEquals(23,SuiteFibonnaci.fibo(0));
+    }
 }
