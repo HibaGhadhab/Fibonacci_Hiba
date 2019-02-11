@@ -14,28 +14,33 @@
     <artifactId>fibonacci-webapp</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
+    <!--Pour dire qu'il s'agit d'un jar-->
     <packaging>jar</packaging>
 
+    <!--Description pour la documentation-->
     <description>Fibonacci module webapp (jar)</description>
 
+    <!--bloc des dépendances à ajouter-->
     <dependencies>
-
+        <!--pour SpringBoot-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
+        <!--dependance au module core-->
         <dependency>
             <groupId>eu.ensg.hiba.fibonacci</groupId>
             <artifactId>core</artifactId>
             <version>1.0.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
-
     </dependencies>
 
     <build>
+        <!--bloc des plugins à ajouter-->
         <plugins>
+
+            <!--plugin Springboot-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -48,8 +53,8 @@
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
     </build>
-
 
 </project>

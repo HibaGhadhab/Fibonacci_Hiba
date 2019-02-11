@@ -14,11 +14,13 @@
     <artifactId>core</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
+    <!--Pour dire qu'il s'agit d'un jar-->
     <packaging>jar</packaging>
 
+    <!--Description pour la documentation-->
     <description>Fibonacci module core (jar)</description>
 
-
+    <!--bloc des dépendances à ajouter-->
     <dependencies>
 
         <!--pour les tests unitaires-->
