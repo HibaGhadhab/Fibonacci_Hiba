@@ -32,10 +32,10 @@ mvn site verify
 ### Utilisation
 1. *la possibilité de démarrer l'application SpringBoot.*
 ```
-java -jar webapp/target/fibonacci-webapp-1.0.0-SNAPSHOT.jar
+java -jar webapp/target/fibonacci-webapp-1.0.0-SNAPSHOT.jar --server.port=8181
 ```
 ```
-http://localhost:8080/fibonacci/13
+gi
 ```
 2. *la possibilité d'utiliser le plugin Maven.*
 ```
