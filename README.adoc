@@ -28,19 +28,19 @@ mvn site verify
 1. *la documentation des modules.*
 2. *l'éxecution des tests.*
 3. *la génération des binaires des projets.*
-4. *la possibilité de démarrer l'application SpringBoot.*
+
+### Utilisation
+1. *la possibilité de démarrer l'application SpringBoot.*
 ```
 java -jar webapp/target/fibonacci-webapp-1.0.0-SNAPSHOT.jar
 ```
 ```
 http://localhost:8080/fibonacci/13
 ```
-5. *la possibilité d'utiliser le plugin Maven.*
+2. *la possibilité d'utiliser le plugin Maven.*
 ```
 mvn eu.ensg.hiba.maven.plugins:fibonacci-maven-plugin:1.0.0-SNAPSHOT:Fibonacci -DmyNumber=13
 ```
-### Utilisation
-
 
 ### Auteur
 Hiba GHADHAB.
