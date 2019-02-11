@@ -22,19 +22,21 @@
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <!--version compiler -->
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
 
         <!--Springboot-->
         <springframework.boot.version>2.1.2.RELEASE</springframework.boot.version>
 
+        <!--documentation des modules avec Javadoc-->
+        <!-- <maven.javadoc.version>3.1.0-SNAPSHOT</maven.javadoc.version>-->
+
     </properties>
 
-    <!--bloc des dépendances à ajouter-->
+
     <dependencyManagement>
         <dependencies>
-            <!--dépendance au plugin api-->
+
             <dependency>
                 <groupId>org.apache.maven</groupId>
                 <artifactId>maven-plugin-api</artifactId>
@@ -42,7 +44,6 @@
                 <scope>provided</scope>
             </dependency>
 
-            <!--dépendance au plugin annotation-->
             <dependency>
                 <groupId>org.apache.maven.plugin-tools</groupId>
                 <artifactId>maven-plugin-annotations</artifactId>
@@ -50,7 +51,7 @@
                 <scope>provided</scope>
             </dependency>
 
-            <!--dépendance au plugin Springboot-->
+            <!--Springboot-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -59,7 +60,7 @@
                 <scope>import</scope>
             </dependency>
 
-            <!--dépendance au plugin junit pour les tests unitaires-->
+            <!--pour les tests unitaires-->
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
@@ -70,8 +71,7 @@
         </dependencies>
     </dependencyManagement>
 
-    <!--pour le déploiement du site-->
-    <!-- le déploiement a été fait dans le projet de l'intégration continue -->
+    <!--To deploy the site-->
     <distributionManagement>
         <site>
             <id>Fibonacci-site</id>
@@ -81,18 +81,17 @@
     </distributionManagement>
 
     <build>
-        <!--bloc des plugins à ajouter-->
         <pluginManagement>
             <plugins>
 
-                <!--plugin maven source-->
+                <!--source-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
                     <version>2.0.4</version>
                 </plugin>
 
-                <!-- plugin maven site pour la documentation -->
+                <!--site / attach descriptor-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
@@ -104,35 +103,117 @@
                                 <goal>attach-descriptor</goal>
                             </goals>
                         </execution>
-                        <execution>
-                            <id>attach-sources</id>
-                            <goals>
-                                <goal>jar</goal>
-                            </goals>
-                        </execution>
                     </executions>
                 </plugin>
 
-                <!--plugin javadoc pour la documentation -->
+                <!--javadoc -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>3.1.0</version>
-                    <executions>
-                        <execution>
-                            <id>attach-javadocs</id>
-                            <goals>
-                                <goal>jar</goal>
-                            </goals>
-                        </execution>
-                    </executions>
+                </plugin>
+
+                <!--info-reports -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-project-info-reports-plugin</artifactId>
+                    <version>2.8</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.1.0</version>
+                    <configuration>
+                        <show>private</show>
+                        <nohelp>true</nohelp>
+                    </configuration>
                 </plugin>
 
             </plugins>
         </pluginManagement>
+        <plugins>
+
+            <!--&lt;!&ndash; no idea what is it  &ndash;&gt;
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.7.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-descriptor</id>
+                        <goals>
+                            <goal>attach-descriptor</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>-->
+            <!-- START SNIPPET: source -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- END SNIPPET: source -->
+            <!-- START SNIPPET: javadoc -->
+
+            <!-- PROBLEM HERE javadoc -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- END SNIPPET: javadoc -->
+            <!-- for the errors -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.8</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.shared</groupId>
+                        <artifactId>maven-shared-jar</artifactId>
+                        <version>1.1</version>
+                        <exclusions>
+                            <exclusion>
+                                <groupId>org.apache.bcel</groupId>
+                                <artifactId>bcel</artifactId>
+                            </exclusion>
+                        </exclusions>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.google.code.findbugs</groupId>
+                        <artifactId>bcel-findbugs</artifactId>
+                        <version>6.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <useSystemClassLoader>false</useSystemClassLoader>
+                </configuration>
+            </plugin>
+
+        </plugins>
     </build>
 
-    <!-- reporting: maven-javadoc-plugin (nécessaire pour afficher la page de la documentation) -->
     <reporting>
         <plugins>
             <plugin>
@@ -143,4 +224,235 @@
         </plugins>
     </reporting>
 
+
+
 </project>
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<project xmlns="http://maven.apache.org/POM/4.0.0"-->
+         <!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+         <!--xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">-->
+    <!--<modelVersion>4.0.0</modelVersion>-->
+
+    <!--&lt;!&ndash;le pom parent&ndash;&gt;-->
+    <!--<groupId>eu.ensg.hiba.fibonacci</groupId>-->
+    <!--<artifactId>fibonacci</artifactId>-->
+    <!--<version>1.0.0-SNAPSHOT</version>-->
+
+    <!--<packaging>pom</packaging>-->
+
+    <!--&lt;!&ndash;les modules qui ont fibonacci comme parent&ndash;&gt;-->
+    <!--<modules>-->
+        <!--<module>core</module>-->
+        <!--<module>plugin</module>-->
+        <!--<module>webapp</module>-->
+    <!--</modules>-->
+
+    <!--<properties>-->
+
+        <!--<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+
+        <!--<maven.compiler.source>1.7</maven.compiler.source>-->
+        <!--<maven.compiler.target>1.7</maven.compiler.target>-->
+
+        <!--&lt;!&ndash;Springboot&ndash;&gt;-->
+        <!--<springframework.boot.version>2.1.2.RELEASE</springframework.boot.version>-->
+
+        <!--&lt;!&ndash;documentation des modules avec Javadoc&ndash;&gt;-->
+        <!--&lt;!&ndash; <maven.javadoc.version>3.1.0-SNAPSHOT</maven.javadoc.version>&ndash;&gt;-->
+
+    <!--</properties>-->
+
+
+    <!--<dependencyManagement>-->
+        <!--<dependencies>-->
+
+            <!--<dependency>-->
+                <!--<groupId>org.apache.maven</groupId>-->
+                <!--<artifactId>maven-plugin-api</artifactId>-->
+                <!--<version>3.6.0</version>-->
+                <!--<scope>provided</scope>-->
+            <!--</dependency>-->
+
+            <!--<dependency>-->
+                <!--<groupId>org.apache.maven.plugin-tools</groupId>-->
+                <!--<artifactId>maven-plugin-annotations</artifactId>-->
+                <!--<version>3.6.0</version>-->
+                <!--<scope>provided</scope>-->
+            <!--</dependency>-->
+
+            <!--&lt;!&ndash;Springboot&ndash;&gt;-->
+            <!--<dependency>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-dependencies</artifactId>-->
+                <!--<version>${springframework.boot.version}</version>-->
+                <!--<type>pom</type>-->
+                <!--<scope>import</scope>-->
+            <!--</dependency>-->
+
+            <!--&lt;!&ndash;pour les tests unitaires&ndash;&gt;-->
+            <!--<dependency>-->
+                <!--<groupId>junit</groupId>-->
+                <!--<artifactId>junit</artifactId>-->
+                <!--<version>4.12</version>-->
+                <!--<scope>provided</scope>-->
+            <!--</dependency>-->
+
+        <!--</dependencies>-->
+    <!--</dependencyManagement>-->
+
+    <!--&lt;!&ndash;To deploy the site&ndash;&gt;-->
+    <!--<distributionManagement>-->
+        <!--<site>-->
+            <!--<id>Fibonacci-site</id>-->
+            <!--<name>Fibonacci</name>-->
+            <!--<url>http://localhost/fibonacci/</url>-->
+        <!--</site>-->
+    <!--</distributionManagement>-->
+
+    <!--<build>-->
+        <!--<pluginManagement>-->
+            <!--<plugins>-->
+
+                <!--&lt;!&ndash;source&ndash;&gt;-->
+                <!--<plugin>-->
+                    <!--<groupId>org.apache.maven.plugins</groupId>-->
+                    <!--<artifactId>maven-source-plugin</artifactId>-->
+                    <!--<version>2.0.4</version>-->
+                <!--</plugin>-->
+
+                <!--&lt;!&ndash;site / attach descriptor&ndash;&gt;-->
+                <!--<plugin>-->
+                    <!--<groupId>org.apache.maven.plugins</groupId>-->
+                    <!--<artifactId>maven-site-plugin</artifactId>-->
+                    <!--<version>3.7.1</version>-->
+                    <!--<executions>-->
+                        <!--<execution>-->
+                            <!--<id>attach-descriptor</id>-->
+                            <!--<goals>-->
+                                <!--<goal>attach-descriptor</goal>-->
+                            <!--</goals>-->
+                        <!--</execution>-->
+                    <!--</executions>-->
+                <!--</plugin>-->
+
+                <!--&lt;!&ndash;javadoc &ndash;&gt;-->
+                <!--<plugin>-->
+                    <!--<groupId>org.apache.maven.plugins</groupId>-->
+                    <!--<artifactId>maven-javadoc-plugin</artifactId>-->
+                    <!--<version>3.1.0</version>-->
+                <!--</plugin>-->
+
+                <!--&lt;!&ndash;info-reports &ndash;&gt;-->
+                <!--<plugin>-->
+                    <!--<groupId>org.apache.maven.plugins</groupId>-->
+                    <!--<artifactId>maven-project-info-reports-plugin</artifactId>-->
+                    <!--<version>2.8</version>-->
+                <!--</plugin>-->
+                <!--<plugin>-->
+                    <!--<groupId>org.apache.maven.plugins</groupId>-->
+                    <!--<artifactId>maven-javadoc-plugin</artifactId>-->
+                    <!--<version>3.1.0</version>-->
+                    <!--<configuration>-->
+                        <!--<show>private</show>-->
+                        <!--<nohelp>true</nohelp>-->
+                    <!--</configuration>-->
+                <!--</plugin>-->
+
+            <!--</plugins>-->
+        <!--</pluginManagement>-->
+        <!--<plugins>-->
+
+            <!--&lt;!&ndash;&lt;!&ndash; no idea what is it  &ndash;&gt;-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-site-plugin</artifactId>-->
+                <!--<version>3.7.1</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>attach-descriptor</id>-->
+                        <!--<goals>-->
+                            <!--<goal>attach-descriptor</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>&ndash;&gt;-->
+            <!--&lt;!&ndash; START SNIPPET: source &ndash;&gt;-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-source-plugin</artifactId>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>attach-sources</id>-->
+                        <!--<goals>-->
+                            <!--<goal>jar</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+            <!--&lt;!&ndash; END SNIPPET: source &ndash;&gt;-->
+            <!--&lt;!&ndash; START SNIPPET: javadoc &ndash;&gt;-->
+
+            <!--&lt;!&ndash; PROBLEM HERE javadoc &ndash;&gt;-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-javadoc-plugin</artifactId>-->
+                <!--<version>3.0.1</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>attach-javadocs</id>-->
+                        <!--<goals>-->
+                            <!--<goal>jar</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+            <!--&lt;!&ndash; END SNIPPET: javadoc &ndash;&gt;-->
+            <!--&lt;!&ndash; for the errors &ndash;&gt;-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-project-info-reports-plugin</artifactId>-->
+                <!--<version>2.8</version>-->
+                <!--<dependencies>-->
+                    <!--<dependency>-->
+                        <!--<groupId>org.apache.maven.shared</groupId>-->
+                        <!--<artifactId>maven-shared-jar</artifactId>-->
+                        <!--<version>1.1</version>-->
+                        <!--<exclusions>-->
+                            <!--<exclusion>-->
+                                <!--<groupId>org.apache.bcel</groupId>-->
+                                <!--<artifactId>bcel</artifactId>-->
+                            <!--</exclusion>-->
+                        <!--</exclusions>-->
+                    <!--</dependency>-->
+                    <!--<dependency>-->
+                        <!--<groupId>com.google.code.findbugs</groupId>-->
+                        <!--<artifactId>bcel-findbugs</artifactId>-->
+                        <!--<version>6.0</version>-->
+                    <!--</dependency>-->
+                <!--</dependencies>-->
+            <!--</plugin>-->
+
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-surefire-plugin</artifactId>-->
+                <!--<configuration>-->
+                    <!--<useSystemClassLoader>false</useSystemClassLoader>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+
+        <!--</plugins>-->
+    <!--</build>-->
+
+    <!--<reporting>-->
+        <!--<plugins>-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-javadoc-plugin</artifactId>-->
+                <!--<version>3.0.1</version>-->
+            <!--</plugin>-->
+        <!--</plugins>-->
+    <!--</reporting>-->
+
+
+
+<!--</project>-->
