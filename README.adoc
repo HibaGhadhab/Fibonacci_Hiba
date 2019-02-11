@@ -1,3 +1,47 @@
 = Projet Maven: Suite de Fibonacci
 
+### Description
+Ce répertoire *Fibonacci_Hiba* contient le projet Maven, il s'agit d'obtenir un plugin Maven et une application SpringBoot qui lorqu'on l'on passe un entier, elle renvoie la valeur de la suite Fibonacci au rang de ce entier.
+Ce projet a été élaboré dans le cadre du module Apache Maven, niveau Master 2 TSI 2018/2019 à l'Ecole Nationale des Sciences Géographiques.
+Ce projet contient les modules suivants:
+- ***core***: .
+- ***plugin***: .
+- ***webApp***: .
 
+### Récupérer le projet
+Clôner le projet:
+```
+git clone https://github.com/HibaGhadhab/Fibonacci_Hiba
+```
+
+### Compiler
+```
+mvn clean
+```
+```
+mvn install
+```
+```
+mvn site verify
+```
+
+1. *la documentation des modules.*
+2. *l'éxecution des tests.*
+3. *la génération des binaires des projets.*
+4. *la possibilité de démarrer l'application SpringBoot.*
+```
+java -jar webapp/target/fibonacci-webapp-1.0.0-SNAPSHOT.jar
+```
+```
+http://localhost:8080/fibonacci/13
+```
+5. *la possibilité d'utiliser le plugin Maven.*
+```
+mvn eu.ensg.hiba.maven.plugins:fibonacci-maven-plugin:1.0.0-SNAPSHOT:Fibonacci -DmyNumber=13
+```
+### Utilisation
+
+
+### Auteur
+Hiba GHADHAB.
+Février 2019.
