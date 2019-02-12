@@ -32,7 +32,23 @@ Générer le site de documentation dans le répertoire target/site:
 mvn site verify
 ```
 
-. *La documentation des modules:* La documentation a été faite avec site et avec Javadoc pour les classes java. Voici quelques captures d'écran:
+. *La documentation des modules:*
+
+La documentation a été faite avec site et avec Javadoc pour les classes java. Voici quelques captures d'écran:
+
+*Site du projet (parent):*
+
+image::https://raw.githubusercontent.com/HibaGhadhab/Fibonacci_Hiba/master/CaptureEcran/Site.png[]
+
+
+*Site d'un module (plugin Maven):*
+
+image::https://raw.githubusercontent.com/HibaGhadhab/Fibonacci_Hiba/master/CaptureEcran/SitePlugin.png[]
+
+
+*Javadoc (exemple du controller de l'application SpringBoot):*
+
+image::https://raw.githubusercontent.com/HibaGhadhab/Fibonacci_Hiba/master/CaptureEcran/JavadocController.png[]
 
 . *L'éxecution des tests:* Les tests ont été fait en utilisant la bibliothèque Junit des tests unitaires. Pour se faire, on a ajouté une dépendance dans notre pom.xml adéquat pour ça et qui est:
 ```
@@ -43,6 +59,8 @@ mvn site verify
   <scope>provided</scope>
 </dependency>
 ```
+image::https://raw.githubusercontent.com/HibaGhadhab/Fibonacci_Hiba/master/CaptureEcran/tests.png[]
+
 
 . *La génération des binaires des projets:*
 
@@ -55,6 +73,11 @@ Ensuite, pour tester cette application, il faut utiliser ce lien ci-dessous en p
 ```
 http://localhost:8181/fibonacci/13
 ```
+
+
+image::https://raw.githubusercontent.com/HibaGhadhab/Fibonacci_Hiba/master/CaptureEcran/springboot.png[]
+
+
 . *La possibilité d'utiliser le plugin Maven:* On peut utiliser le plugin qu'on a crée via la commande suivante:
 ```
 mvn eu.ensg.hiba.maven.plugins:fibonacci-maven-plugin:1.0.0-SNAPSHOT:Fibonacci -DmyNumber=13
@@ -71,6 +94,4 @@ Sinon, pour conclure, ce projet m'a permi de découvrir des nouvelles technologi
 Hiba GHADHAB.
 
 Février 2019.
-
-
 
