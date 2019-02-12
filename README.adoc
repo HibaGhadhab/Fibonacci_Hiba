@@ -6,11 +6,11 @@ Ce projet a été élaboré dans le cadre du module Apache Maven, niveau Master 
 
 Ce projet contient les modules suivants:
 
-- *core*: .
+- *core*.
 
-- *plugin*: le plugin Maven.
+- *plugin*.
 
-- *webApp*: l'application SpringBoot.
+- *webApp*.
 
 == Récupérer le projet
 Clôner le projet:
@@ -20,19 +20,22 @@ git clone https://github.com/HibaGhadhab/Fibonacci_Hiba
 
 == Compiler
 Effacer tous les fichiers générés par Maven auparavant (s'ils existent):
+
 ```
 mvn clean
 ```
+
 Installer l'artéfact dans le dépôt local pour qu'il puisse être utilisé comme dépendance d'autres projets:
 ```
 mvn install
 ```
+
 Générer le site de documentation dans le répertoire target/site:
 ```
 mvn site verify
 ```
 
-. *La documentation des modules:*
+*1. La documentation des modules:*
 
 La documentation a été faite avec site et avec Javadoc pour les classes java. Voici quelques captures d'écran:
 
@@ -50,7 +53,8 @@ image::https://raw.githubusercontent.com/HibaGhadhab/Fibonacci_Hiba/master/Captu
 
 image::https://raw.githubusercontent.com/HibaGhadhab/Fibonacci_Hiba/master/CaptureEcran/JavadocController.png[]
 
-. *L'éxecution des tests:* Les tests ont été fait en utilisant la bibliothèque Junit des tests unitaires. Pour se faire, on a ajouté une dépendance dans notre pom.xml adéquat pour ça et qui est:
+*2. L'éxecution des tests:* Les tests ont été fait en utilisant la bibliothèque Junit des tests unitaires. Pour se faire, on a ajouté une dépendance dans notre pom.xml adéquat pour ça et qui est:
+
 ```
 <dependency>
   <groupId>junit</groupId>
@@ -59,13 +63,16 @@ image::https://raw.githubusercontent.com/HibaGhadhab/Fibonacci_Hiba/master/Captu
   <scope>provided</scope>
 </dependency>
 ```
+
 image::https://raw.githubusercontent.com/HibaGhadhab/Fibonacci_Hiba/master/CaptureEcran/tests.png[]
 
 
-. *La génération des binaires des projets:*
+*3. La génération des binaires des projets:* On a bien les différents dossiers target dans tous les modules ou se trouvent les différents binaires des projets et les sites.
+
+image::https://raw.githubusercontent.com/HibaGhadhab/Fibonacci_Hiba/master/CaptureEcran/target.png[]
 
 == Utilisation
-. *La possibilité de démarrer l'application SpringBoot:* Le démarrage de l'application SpringBoot se fait avec la commande suivante en éxécutant le jar généré.
+*1. La possibilité de démarrer l'application SpringBoot:* Le démarrage de l'application SpringBoot se fait avec la commande suivante en éxécutant le jar généré.
 ```
 java -jar webapp/target/fibonacci-webapp-1.0.0-SNAPSHOT.jar --server.port=8181
 ```
@@ -78,7 +85,7 @@ http://localhost:8181/fibonacci/13
 image::https://raw.githubusercontent.com/HibaGhadhab/Fibonacci_Hiba/master/CaptureEcran/springboot.png[]
 
 
-. *La possibilité d'utiliser le plugin Maven:* On peut utiliser le plugin qu'on a crée via la commande suivante:
+*2. La possibilité d'utiliser le plugin Maven:* On peut utiliser le plugin qu'on a crée via la commande suivante:
 ```
 mvn eu.ensg.hiba.maven.plugins:fibonacci-maven-plugin:1.0.0-SNAPSHOT:Fibonacci -DmyNumber=13
 ```
@@ -87,6 +94,8 @@ Au bout de 5 heures, je n'ai pas pu terminer le projet. Il m'a fallut au cours d
 
 La partie qui m'a pris la plus de temps c'est la documentation (la création du site) et son déploiement. En fait, quand on éxécute mvn site, Maven génère un site pour chaque module. Dans ce cas, les liens relatives qui relie les différents modules dans le site ne fonctionnent pas. Mais, par contre ils sont fonctionnels au niveau du déploiement du site (ce qui a été fait dans le projet de l'intégration continue qui est accessible via ce lien: *+https://gitlab.com/HibaGhadhab/fibonacci_hiba+* ). J'ai trouvé cette explication dans la documentation officielle d'Apache Maven, sur ce lien: *+https://maven.apache.org/plugins/maven-site-plugin/examples/multimodule.html+*.
 
+Une des difficultés que j'ai rencotnré c'est que parfois je comprenais pas l'erreur généré lors de la compilation. Pour les fixer, j'étais obligée d'ajouter des blocs dans mon pom.xml que je comprenais pas. (les blocs non commentés)
+
 J'ai rencontré aussi un autre problème posé par Tomcat. Tout d'un coup (en rien modifiant), Tomcat m'a généré une erreur en disant que le port est utilisé, alors qu'en vérifiant, il ne l'ai pas. J'ai fallait après modifier le port de 8080 en 8181.
 Sinon, pour conclure, ce projet m'a permi de découvrir des nouvelles technologies (Maven, création et utilisation des plugins, SpringBoot, Git et de l'intégration continue par la suite avec GitLab) et de gagner de l'expérience.
 
@@ -94,4 +103,6 @@ Sinon, pour conclure, ce projet m'a permi de découvrir des nouvelles technologi
 Hiba GHADHAB.
 
 Février 2019.
+
+
 
