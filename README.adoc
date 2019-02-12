@@ -78,7 +78,7 @@ java -jar webapp/target/fibonacci-webapp-1.0.0-SNAPSHOT.jar --server.port=8181
 ```
 Ensuite, pour tester cette application, il faut utiliser ce lien ci-dessous en passant l'entier qu'on veut calculer sa suite de Fibonacci comme paramètre dans l'URL (exemple 13):
 ```
-http://localhost:8181/fibonacci/13
+http://localhost:8181/fibonacci/7
 ```
 
 
@@ -94,9 +94,10 @@ Au bout de 5 heures, je n'ai pas pu terminer le projet. Il m'a fallut au cours d
 
 La partie qui m'a pris la plus de temps c'est la documentation (la création du site) et son déploiement. En fait, quand on éxécute mvn site, Maven génère un site pour chaque module. Dans ce cas, les liens relatives qui relie les différents modules dans le site ne fonctionnent pas. Mais, par contre ils sont fonctionnels au niveau du déploiement du site (ce qui a été fait dans le projet de l'intégration continue qui est accessible via ce lien: *+https://gitlab.com/HibaGhadhab/fibonacci_hiba+* ). J'ai trouvé cette explication dans la documentation officielle d'Apache Maven, sur ce lien: *+https://maven.apache.org/plugins/maven-site-plugin/examples/multimodule.html+*.
 
-Une des difficultés que j'ai rencotnré c'est que parfois je comprenais pas l'erreur généré lors de la compilation. Pour les fixer, j'étais obligée d'ajouter des blocs dans mon pom.xml que je comprenais pas. (les blocs non commentés)
+Une des difficultés que j'ai rencotnré c'est que parfois je comprenais pas l'erreur générée lors de la compilation. Pour les fixer, j'étais obligée d'ajouter des blocs dans mon pom.xml que je comprenais pas. (les blocs non commentés)
 
-J'ai rencontré aussi un autre problème posé par Tomcat. Tout d'un coup (en rien modifiant), Tomcat m'a généré une erreur en disant que le port est utilisé, alors qu'en vérifiant, il ne l'ai pas. J'ai fallait après modifier le port de 8080 en 8181.
+J'ai rencontré aussi un autre problème posé par Tomcat. Tout d'un coup (en rien modifiant), Tomcat m'a généré une erreur en disant que le port est utilisé, alors qu'en vérifiant, il ne l'ai pas. Même en redémarrant mon ordinateur, l'erreur existait toujours. Du coup, j'ai modifié le port de 8080 en 8181.
+
 Sinon, pour conclure, ce projet m'a permi de découvrir des nouvelles technologies (Maven, création et utilisation des plugins, SpringBoot, Git et de l'intégration continue par la suite avec GitLab) et de gagner de l'expérience.
 
 == Auteur
